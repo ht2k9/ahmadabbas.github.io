@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ahmad Abbas Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patrick+Hand|Felipa|Indie+Flower">
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+}
+body, html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-family: monospace;
+    background: linear-gradient(to bottom right, #122499, #2989d8, #122be8);
+}
+
+.information{
+    margin-right: 10px;
+    text-align: end;
+    grid-column: 1/4;
+}
+.information h2{
+    font-size: 3vw;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.information p{
+    font-size: 3.5vw;
+}
+.square{
+    transition: 0.5s ease;
+    height: 100%;
+    width: 100%;
+}
+.square img{
+    height: 100%;
+    width: 100%;
+}
+.square-dark, .square-light{
+    background: cornsilk;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-size: cover; 
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: relative;
+}
+.square-dark h3, .square-light h3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.square-light{
+    font-family: 'Indie Flower', cursive;
+}
+.square-dark{
+    font-family: 'Patrick Hand', cursive;
+}
+.square-image{
+    background: rgba(74, 169, 152, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.square-image .icon{
+    font-size: 8vw;
+}
+.square-image h3{
+    font-family: 'Felipa', cursive;
+}
+.fa-linkedin{
+    color: #21098a;
+}
+.fa-github{
+    color: #010a04;
+}
+.fa-facebook{
+    color: #20045f;
+}
+.square h3{
+    font-size: 3vw;
+    color: black;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+}
+
+.project-view{
+    transform: scale(0.05);
+    transform-origin: 0% 0%;
+    width: 100%;
+    grid-column: 1/7;
+    grid-row: 2/8;
+    transition: 1s;
+    opacity: 0;
+}
+.btn-close{
+    transform: scale(0);
+    grid-column: 3/5;
+    grid-row: 5;
+    font-size: 3vw;
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 1px;
+    background: #c01313;
+    color: cornsilk;
+    transition: 0.4s 1s;
+    border: none;
+    grid-row: 8;
+    cursor: pointer;
+}
+
+.showView{
+    transform: scale(1);
+    opacity: 1;
+}
+.highlighted{
+    transform:  scale(1.2) translateZ(50px);
+}
+       .wrapper{
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-auto-rows: minmax(50px, auto);
+    border: 1px solid red;
+    padding: 0px 5%;
+    perspective: 500px;
+    perspective-origin: center;
+    transform-style: preserve-3d;
+}
+.grid-item{
+    transition: 0.5s;
+}
+.grid-item:hover div{
+    transform:  scale(1.2) translateZ(50px);  
+}
+
+.grid-top{
+    grid-row: 2/4;
+}
+.grid-middle{
+    grid-row: 4/6;
+}
+.grid-bottom{
+    grid-row: 6/8;
+}
+.wrapper :nth-child(3){
+    grid-column: 4/6;
+}
+.wrapper :nth-child(4){
+    grid-column: 6;
+}
+.wrapper :nth-child(5){
+    grid-column: 1;
+}
+.wrapper :nth-child(6){
+    grid-column: 2;
+}
+.wrapper :nth-child(7){
+    grid-column: 3;
+}
+.wrapper :nth-child(8){
+    grid-column: 4;
+}
+.wrapper :nth-child(9){
+    grid-column: 5/7;
+}
+.wrapper :nth-child(10){
+    grid-column: 3/5;
+}
+.wrapper :nth-child(11){
+    grid-column: 5;
+}
+
+nav{
+    display: flex;
+    grid-column: 1 / 7;
+    grid-row: 1;
+    align-items: center;
+}
+nav ul{
+    display: flex;
+    border-radius: 15px;
+}
+nav ul li{
+    list-style: none;
+    margin: 0 3%;
+    transition: 0.5s;
+}
+nav ul li a{
+    display: block;
+    position: relative;
+    text-decoration: none;
+    font-size: 3vw;
+    font-family: sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+nav ul:hover li a{
+    transform: scale(1.5);
+    opacity: .5;
+    filter: blur(2px);
+}
+nav ul li a:hover{
+    transform: scale(2);
+    opacity: 1;
+    filter: blur(0);
+}
+nav ul li a:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #4f65b5;
+    transition: 0.5s;
+    transform-origin: right;
+    transform: scaleX(0);
+    z-index: -1;
+}
+nav ul li a:hover:before{
+    transition: transform 0.5s;
+    transform-origin: left;
+    transform:scaleX(1);
+}
+.project-view{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    overflow-y: scroll;
+    align-items: center;
+    background: linear-gradient(#4ea7ef, rgba(115, 187, 149, 1) 48.74%, #3ccce0);
+}
+.project-view *{
+    margin: 5px; 
+}
+.project-title{
+    font-size: 4vw;
+    text-align: center;
+}
+.project-links{
+    font-size: 1.5em;
+    color: rgb(5, 4, 4);
+}
+.skill-box{
+    text-align: center;
+}
+.skill-box span{
+    border: 1px solid rgb(100, 233, 100);
+    background: rgb(100, 233, 100);
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
+    font-size: 2vw;
+}
+.img-box{
+    text-align: center;
+}
+.img-box img{
+    width: 70%;
+}
+.description-box p{
+    display: inline-block;
+    margin: 15px 15%;
+    font-size: 4vw;
+}
+    </style>
+    <script src="main.js"></script>
+</head>
+<body>
+        <div class="wrapper">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="active">About</a></li>
+                        <li><a onclick="onHighlight('square-dark')" style="cursor: pointer;">Projects</a></li>
+                        <li><a onclick="onHighlight('square-light')" style="cursor: pointer;">Courses</a></li>
+                        <li><a onclick="onHighlight('square-image')" style="cursor: pointer;">Contact</a></li>
+                        <li><a href="#">Resume</a></li>
+                    </ul>
+                </nav>
+                <div class="grid-item grid-top information">
+                    <h2>Ahmad Abbas</h2>
+                    <p>Junior Web Developer</p>
+                </div>
+                <div class="grid-item grid-top" onclick="showDetails(0)">
+                    <div class="square square-dark" style="background:wheat">
+                        <img src="https://dotnettutorials.net/wp-content/uploads/2018/07/C.NET_.png" alt="angular ecommerce">
+                    </div>
+                </div>
+                <div class="grid-item grid-top">
+                    <div class="square square-light" onclick="showDetails(5)">
+                        <img src="https://neelbhatt40.files.wordpress.com/2018/09/manav17.jpg?w=1100" alt="recipe-book-app">
+                    </div>
+                </div>
+                <div class="grid-item grid-middle">
+                    <div class="square square-light" onclick="showDetails(2)" style="background: white;">
+                        <img src="https://res.cloudinary.com/teepublic/image/private/s--mSjDDLiQ--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1526996828/production/designs/2712780_1.jpg" alt="udemy-node">
+                    </div>
+                </div>
+                <div class="grid-item grid-middle">
+                    <div class="square square-image">
+                        <a href="https://www.facebook.com/ahmad.abbas.3958914"> <i class="fab fa-facebook icon"></i></a>
+                        <h3>Facebook</h3>
+                    </div>
+                </div>
+                <div class="grid-item grid-middle" onclick="showDetails('3')">
+                    <div class="square square-dark" style="background: rgb(197, 225, 254)">
+                        <img src="https://bootcamp.geekshubsacademy.com/wp-content/uploads/2018/06/mean-stack-1.png" alt="mean-stack">
+                    </div>
+                </div>
+                <div class="grid-item grid-middle">
+                    <div class="square square-image">
+                        <a href="https://github.com/ht2k9"> <i class="fab fa-github icon"></i></a>
+                        <h3>Github</h3>
+                    </div>
+                </div>
+                <div class="grid-item grid-middle" onclick="showDetails('4')">
+                    <div class="square square-dark">
+                            <img src="https://www.quotecolo.com/wp-content/uploads/2016/08/Amazon-AWS-Alternatives-EC2-Cloud-Stats-LOGO-665x400.png" alt="mysql-angular-amazon">                
+                    </div>
+                </div>
+                <div class="grid-item grid-bottom" onclick="showDetails('1')">
+                    <div class="square square-dark">
+                        <img src="https://cdn-images-1.medium.com/max/1600/1*XJo1GyYJN-3WrSKpUkyUkw.gif" alt="android truefalse online">
+                    </div>
+                </div>
+                <div class="grid-item grid-bottom">
+                    <div class="square square-image">
+                        <a href="https://linkedin.com/in/ahmed-abbas-ht2k9"> <i class="fab fa-linkedin icon"></i></a>
+                        <h3>Linkedin</h3>
+                    </div>
+                </div>
+                <div id="project-view" class="project-view">
+                </div>
+                <button id="btn-close" class="btn-close" onclick="hideDetails()">Close</button>
+            </div>
+
+<script>
+const detailesView = document.getElementById('project-view');
+const closBtn = document.getElementById('btn-close');
+const gridItems = document.getElementsByClassName('grid-item');
+let timer;
+
+const data = [
+    {
+        title: 'Game Development',
+        link: 'https://github.com/ht2k9/MonoGame-TopDown-Shooter',
+        skills: ['Unity3D', 'C#', 'Visual Studio', 'MonoGame', 'OpenGL',  'C', 'OOP'],
+        images: [''],
+        description: ['Completed many games, it started as a hobby in high school.',
+            'Mastered C# in Unity3D, physics and animation, lead me to complete my final college project using OOP combined with game development logic.',
+            'Finished over 5 completed games, multiplayer, 3D, 2D, Top-Down, publishd on Google Play or Github.'
+        ]
+    },
+    {
+        title: 'Android Applications',
+        link: 'https://play.google.com/store/apps/developer?id=HT2k9',
+        skills: ['Android Studio', 'JAVA', 'Firebase', 'Gradle', 'Admob'],
+        images: [''],
+        description: ['Developed and published for the span of two years, 2015 - 2017, android applications that allowed me to master JAVA, Firebase and Analytics',
+            'Over 100k cumulative downloads, ads, weekly updates, marketing and design.'
+        ]
+    },
+    {
+        title: 'Web Development Bootcamp',
+        link: 'https://www.udemy.com/the-web-developer-bootcamp/',
+        skills: ['Node', 'JavaScript', 'Cloud9', 'HTML', 'CSS',  'Bootstrap 4', 'MongoDB', 'Restful Routing'],
+        images: [''],
+        description: ['To specialise as a full stack web developer after college, Colt Steel\s course in Udemy.',
+            'Mastered Node, Express as backend and Bootstrap 4 Responsive design, EJS HTML as frontend.'
+        ]
+    },
+    {
+        title: 'E-Commerce Gift Shop',
+        link: 'https://github.com/ht2k9',
+        skills: ['CSS Grid', 'CSS', 'Angular 7', 'MongoDB', 'Typescript', 'Node JS', 'Responsive', 'UI/X', 'PassportJS'],
+        images: [''],
+        description: ['Full E-Commerce single page app, coded in Angular 7 and NodeJS.',
+            'User authenication, order tracking, auto mailing, admin dashboard. Online gift shop with beautiful UI.',
+            'Neat and dry Code, easily understandable and optimized to run smoothly on any platform. Secure purchases is a must, Using Node and Express routing.',
+            'The shop offers the user to search and filter result, the page loads in less than 2 seconds, for a great costumer excperience.'
+        ]
+    },
+    {
+        title: 'Angular RDMS',
+        link: 'https://github.com/ht2k9/Angular-SQL-Table-Management',
+        skills: ['Angular 7', 'Typescript', 'Bootstrap 4', 'MySQL', 'AWS', 'Firebase Hosting', 'NodeJS'],
+        images: [''],
+        description: ['A relational database management system (RDBMS) in Angular 7 for creating and managing databases.',
+         'The DBMS provides an authorized user with a systematic way to create, '+
+         'retrieve, update and manage data. The DBMS essentially serves as an interface between the database and end users or application programs, ensuring that data is consistently organized and remains easily accessible.'
+        ]
+    },
+    {
+        title: 'Angular 7 Complete Guide',
+        link: 'https://www.udemy.com/the-complete-guide-to-angular-2/',
+        skills: ['Authenication', 'Firebase', 'Routing', 'Single Page App', 'Typescript'],
+        images: [''],
+        description: ['An online course, to master all aspects of Angular 7 and Typescript',
+            'For a whole month, everyday to code in Angular and finish and deploy the RecipeBook single page app with firebase as backend.',
+            'From Setup to Deployment, this course covers it all, all about Components, Directives, Services, Forms, Http Access, Authentication, Optimizing an Angular App with Modules and Offline Compilation and much more.'
+        ]
+    }
+];
+
+function onHighlight(highlight){
+    clearTimeout(timer);
+
+    const yesHigh = document.getElementsByClassName(highlight);
+    const noHigh = document.getElementsByClassName('square');
+
+    for (let i = 0; i < noHigh.length; i++) {
+        const element = noHigh[i];
+        element.classList.remove('highlighted');
+    }
+    for (let i = 0; i < yesHigh.length; i++) {
+        const element = yesHigh[i];
+        element.classList.toggle('highlighted');
+    }
+    timer = setTimeout(() => {
+        for (let i = 0; i < noHigh.length; i++) {
+            const element = noHigh[i];
+            element.classList.remove('highlighted');
+        }
+    }, 2000);
+}
+function showDetails(selectedProject){
+    detailesView.scrollTo(0, 0);
+
+    const {title, link, skills, images, description} = data[selectedProject];
+
+    const skillBox = document.createElement('div');
+    const imgBox = document.createElement('div');
+    const descriptionBox = document.createElement('div');
+
+    skillBox.classList.add('skill-box');
+    imgBox.classList.add('img-box');
+    descriptionBox.classList.add('description-box');
+
+    while (detailesView.firstChild) {
+        detailesView.removeChild(detailesView.firstChild);
+    }
+
+    for (let i = 0; i < gridItems.length; i++) {
+        const element = gridItems[i];
+        element.style.transform = 'scale(0)';
+    }
+
+    detailesView.classList.add('showView');
+    closBtn.classList.add('showView');
+
+    detailesView.insertAdjacentHTML('afterbegin', `
+        <div class="project-title">
+            <h3>${title}
+                <span class="project-links">
+                    <a href="${link}"><i class="fas fa-share-square"></i></a>
+                </span>
+            </h3>
+        </div>
+    `);
+
+    skills.forEach(skill => {
+        skillBox.insertAdjacentHTML('beforeend', `<span>${skill}</span>`);
+    });
+    images.forEach(img => {
+        imgBox.insertAdjacentHTML('beforeend', `<img src="${img}" alt="">`);
+    });
+    description.forEach(paragraph => {
+        descriptionBox.insertAdjacentHTML('beforeend', `<p>${paragraph}</p>`);
+    });
+
+    detailesView.appendChild(skillBox);
+    detailesView.appendChild(imgBox);
+    detailesView.appendChild(descriptionBox);
+}
+function hideDetails(){
+    detailesView.classList.remove('showView');
+    closBtn.classList.remove('showView');
+    for (let i = 0; i < gridItems.length; i++) {
+        const element = gridItems[i];
+        element.style.transform = 'initial';
+    }
+}
+
+</script>
+</body>
+</html>
