@@ -2,8 +2,8 @@
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patrick+Hand|Felipa|Indie+Flower">
-	<style>
-		*{
+    <style>
+        *{
     padding: 0;
     margin: 0;
 }
@@ -195,7 +195,7 @@ nav{
     grid-row: 1;
     justify-content: center;
     align-items: center;
-	transition: 0.65s ease-in;
+    transition: 0.65s ease-in;
 }
 nav ul{
     border-radius: 15px;
@@ -217,7 +217,11 @@ nav ul li a{
     text-transform: uppercase;
     transition: 0.5s;
 }
-
+@media screen and (max-width: 600px) {
+    nav ul li a {
+       font-size: 12px;
+    }
+}
 nav ul:hover li a{
     transform: scale(1.5);
     opacity: .5;
@@ -250,10 +254,12 @@ nav ul li a:hover:before{
     padding: 5px;
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+    border: 5px solid;
     overflow-y: scroll;
     align-items: center;
-    background: linear-gradient(#4ea7ef, rgba(115, 187, 149, 1) 48.74%, #3ccce0);
+    color: white;
+    border-radius: 5px;
+    margin-top: 5%;
 }
 .project-view *{
     margin: 5px; 
@@ -268,14 +274,16 @@ nav ul li a:hover:before{
 }
 .skill-box{
     text-align: center;
+    padding: 0 15%;
 }
 .skill-box span{
-    border: 1px solid rgb(100, 233, 100);
-    background: rgb(100, 233, 100);
+    border: 1px solid rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
     border-radius: 5px;
     padding: 5px;
     display: inline-block;
     font-size: 2vw;
+    color: #183667;
 }
 .img-box{
     text-align: center;
@@ -288,7 +296,7 @@ nav ul li a:hover:before{
     margin: 15px 15%;
     font-size: 4vw;
 }
-	</style>
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -358,77 +366,76 @@ nav ul li a:hover:before{
         <button id="btn-close" class="btn-close" onclick="hideDetails()">Close</button>
     </div>
     <script>
-const detailesView = document.getElementById('project-view');
+        const detailesView = document.getElementById('project-view');
 const closBtn = document.getElementById('btn-close');
 const gridItems = document.getElementsByClassName('grid-item');
 const navbar = document.getElementById('navbar')
-let timer;
 
 const data = [
     {
         title: 'Game Development',
         link: 'https://github.com/ht2k9/MonoGame-TopDown-Shooter',
         skills: ['Unity3D', 'C#', 'Visual Studio', 'MonoGame', 'OpenGL',  'C', 'OOP'],
-        images: [''],
         description: ['Completed many games, it started as a hobby in high school.',
             'Mastered C# in Unity3D, physics and animation, lead me to complete my final college project using OOP combined with game development logic.',
             'Finished over 5 completed games, multiplayer, 3D, 2D, Top-Down, publishd on Google Play or Github.'
-        ]
+        ],
+        gifLink: 'https://giphy.com/embed/1Y6SLLM2GKO61OeiXi'
     },
     {
         title: 'Android Applications',
         link: 'https://play.google.com/store/apps/developer?id=HT2k9',
         skills: ['Android Studio', 'JAVA', 'Firebase', 'Gradle', 'Admob'],
-        images: [''],
         description: ['Developed and published for the span of two years, 2015 - 2017, android applications that allowed me to master JAVA, Firebase and Analytics',
             'Over 100k cumulative downloads, ads, weekly updates, marketing and design.'
-        ]
+        ],
+        gifLink: 'https://giphy.com/embed/1msv1NhkVzxMuCQOJl'
     },
     {
         title: 'Web Development Bootcamp',
         link: 'https://www.udemy.com/the-web-developer-bootcamp/',
         skills: ['Node', 'JavaScript', 'Cloud9', 'HTML', 'CSS',  'Bootstrap 4', 'MongoDB', 'Restful Routing'],
-        images: [''],
         description: ['To specialise as a full stack web developer after college, Colt Steel\s course in Udemy.',
             'Mastered Node, Express as backend and Bootstrap 4 Responsive design, EJS HTML as frontend.'
-        ]
+        ],
+        img: 'https://i.ibb.co/3zZMq9h/web3.png'
     },
     {
+        //https://giphy.com/gifs/5C0eKMlwEN4nAbli6X
         title: 'E-Commerce Gift Shop',
         link: 'https://github.com/ht2k9',
         skills: ['CSS Grid', 'CSS', 'Angular 7', 'MongoDB', 'Typescript', 'Node JS', 'Responsive', 'UI/X', 'PassportJS'],
-        images: [''],
         description: ['Full E-Commerce single page app, coded in Angular 7 and NodeJS.',
             'User authenication, order tracking, auto mailing, admin dashboard. Online gift shop with beautiful UI.',
             'Neat and dry Code, easily understandable and optimized to run smoothly on any platform. Secure purchases is a must, Using Node and Express routing.',
             'The shop offers the user to search and filter result, the page loads in less than 2 seconds, for a great costumer excperience.'
-        ]
+        ],
+        gifLink: 'https://giphy.com/embed/5C0eKMlwEN4nAbli6X'
     },
     {
+        //https://giphy.com/gifs/ddCQmxLXxVpkXyf5qt
         title: 'Angular RDMS',
         link: 'https://github.com/ht2k9/Angular-SQL-Table-Management',
         skills: ['Angular 7', 'Typescript', 'Bootstrap 4', 'MySQL', 'AWS', 'Firebase Hosting', 'NodeJS'],
-        images: [''],
         description: ['A relational database management system (RDBMS) in Angular 7 for creating and managing databases.',
          'The DBMS provides an authorized user with a systematic way to create, '+
          'retrieve, update and manage data. The DBMS essentially serves as an interface between the database and end users or application programs, ensuring that data is consistently organized and remains easily accessible.'
-        ]
+        ],
+        gifLink: 'https://giphy.com/embed/ddCQmxLXxVpkXyf5qt'
     },
     {
         title: 'Angular 7 Complete Guide',
         link: 'https://www.udemy.com/the-complete-guide-to-angular-2/',
         skills: ['Authenication', 'Observable', 'Routing', 'Single Page App', 'Typescript'],
-        images: [''],
         description: ['An online course, to master all aspects of Angular 7 and Typescript',
             'For a whole month, everyday to code in Angular and finish and deploy the RecipeBook single page app with firebase as backend.',
             'From Setup to Deployment, this course covers it all, all about Components, Directives, Services, Forms, Http Access, Authentication, Optimizing an Angular App with Modules and Offline Compilation and much more.'
-        ]
+        ],
+        img: 'https://i.ibb.co/cLShkP7/web2.png'
     }
 ];
 
 function onHighlight(highlight){
-    // clearTimeout(timer);
-
     const goHight = document.getElementsByClassName(highlight);
     const noHigh = document.getElementsByClassName('square');
     if(highlight != 'all'){
@@ -441,21 +448,18 @@ function onHighlight(highlight){
         const element = goHight[i];
         element.classList.remove('highlighted');
     }
-    // timer = setTimeout(() => {
-    //     for (let i = 0; i < noHigh.length; i++) {
-    //         const element = noHigh[i];
-    //         element.classList.remove('highlighted');
-    //     }
-    // }, 2000);
 }
 function showDetails(selectedProject){
     detailesView.scrollTo(0, 0);
 
-    const {title, link, skills, images, description} = data[selectedProject];
+    const {title, link, skills, description, gifLink, img} = data[selectedProject];
 
     const skillBox = document.createElement('div');
     const imgBox = document.createElement('div');
     const descriptionBox = document.createElement('div');
+    const giff = `<div style="width:70%;height:0;padding-bottom:56%;position:relative;">
+    <iframe src=${gifLink} width="100%" height="100%" style="position:absolute" frameBorder="0"></iframe>
+    </div>`;
 
     skillBox.classList.add('skill-box');
     imgBox.classList.add('img-box');
@@ -474,6 +478,7 @@ function showDetails(selectedProject){
 
     detailesView.classList.add('showView');
     closBtn.classList.add('showView');
+    imgBox.insertAdjacentHTML('beforeend', `<img src=${img}>`)
 
     detailesView.insertAdjacentHTML('afterbegin', `
         <div class="project-title">
@@ -488,15 +493,16 @@ function showDetails(selectedProject){
     skills.forEach(skill => {
         skillBox.insertAdjacentHTML('beforeend', `<span>${skill}</span>`);
     });
-    images.forEach(img => {
-        imgBox.insertAdjacentHTML('beforeend', `<img src="${img}" alt="">`);
-    });
     description.forEach(paragraph => {
         descriptionBox.insertAdjacentHTML('beforeend', `<p>${paragraph}</p>`);
     });
 
     detailesView.appendChild(skillBox);
-    detailesView.appendChild(imgBox);
+    if(gifLink){
+        detailesView.insertAdjacentHTML('beforeend', giff);
+    }else{
+        detailesView.appendChild(imgBox);
+    }
     detailesView.appendChild(descriptionBox);
 }
 function hideDetails(){
@@ -510,5 +516,5 @@ function hideDetails(){
 }
 
 function init(){}
-	</script>
+    </script>
 </body>
